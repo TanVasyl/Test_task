@@ -1,49 +1,80 @@
-import { title } from 'process'
 import React from 'react'
 
-const Items = [1,2,3,4,5]
-const Item = [
+const Item= [
     {
         id: 0,
-        taste: 'fish',
-        valume: 0.5,
-        quantity: 2
+        taste: 'с фуа-гра',
+        valume: '0.5',
+        quantity: 2,
+        gift: 'мышь в подарок',
+        selected: false,
+        description: "Печень утки разварная с артишоками."
     },
     {
         id: 1,
-        taste: 'fish',
-        valume: 0.5,
-        quantity: 0
+        taste: 'с рыбой',
+        valume: '2',
+        quantity: 0,
+        gift: '2 мыши в подарок',
+        selected: false,
+        description: "Головы щучьи с чесноком да свежайшая сёмгушка."
+    },
+    {
+        id: 2,
+        taste: 'с курой',
+        valume: '5',
+        quantity: 1,
+        gift: '5 мышей в подарок',
+        selected: true,
+        description: "Филе из цыплят с трюфелями в бульоне."
     }
 ]
 const Card: React.FC = () => {
     return( 
-       <>
+       <div className="container ">
             {Item.map((elem) => {
                return (
-                <div className="container ">
-                <div key={elem.id} className={(elem.quantity) ? 'block' : "block disabled"}>
-                    <div className='title__content'>
-                        <span className='title'>Cказочное заморское яство</span>
-                        <h2 className='name__brand'>Нямушка</h2>
-                        <h3>{elem.taste}</h3>
-                        <span>
-                        10 порций
-                        Мышь в подарок
-                        </span>
-                    </div>
-                        <div className='volume'>
-                        <span>0,5 кг.</span>
+                    <div>
+                        <div key={elem.id} className={((elem.quantity) ? 'block' : "block disabled") + ((!elem.selected) ? '' : ' selected') }>
+                        <div className={(elem.quantity) ? '' : "overlay"}>
+                            <div className='title__content'>
+                                <span className='title'>Cказочное заморское яство</span>
+                                <div className='name__brand'>
+                                    <span>Нямушка</span>
+                                    <span className='taste'>{elem.taste}</span>
+                                </div>
+                                <p className='optionally'>
+                                    <span className='portions'>
+                                    {+elem.valume * 20} порций
+                                    </span>
+                                    <span>{elem.gift}</span>
+                                    <span>
+                                    {(+elem.valume >= 5) ? 'заказчик доволен' : ''}
+                                    </span>
+                                </p>
+                            </div>
+                            <div className={(elem.quantity) ? 'valume' : " valume inactive "}>
+                                <span className='weight'>{elem.valume}</span>
+                                <span>кг</span>
+                            </div>
                         </div>
-   
+                        </div>
+                        <p className='footer'>
+                            {(elem.selected) 
+                            ? <div>{elem.description}</div> 
+                            : (elem.quantity <= 0) ? <div style={{color:'#FFFF66'}}>
+                                    Печалька, {elem.taste} закончился
+                                </div> 
+                            : <div>Чего сидишь? Порадуй котэ, 
+                                    <button className='sell'>купи</button>
+                                </div>  
+                            }
+                        </p>
                     </div>
-                    <span className='footer'>Чего сидишь? Порадуй котэ, <a href="">купи</a></span>
-                </div>
+                   
                )
             })}
-            
-            </>
-        
+        </div>
     )
 }
 
