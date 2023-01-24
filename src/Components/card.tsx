@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Item= [
+const initialState= [
     {
         id: 0,
         taste: 'с фуа-гра',
@@ -9,6 +9,7 @@ const Item= [
         gift: 'мышь в подарок',
         selected: false,
         description: "Печень утки разварная с артишоками."
+    
     },
     {
         id: 1,
@@ -25,17 +26,32 @@ const Item= [
         valume: '5',
         quantity: 1,
         gift: '5 мышей в подарок',
-        selected: true,
+        selected: false,
         description: "Филе из цыплят с трюфелями в бульоне."
     }
 ]
+
 const Card: React.FC = () => {
+    const [items, setItems] = React.useState(initialState)
+    
+    const select = (elem:any) => {
+        const newItems = items.map((item) => {
+            if(item.id === elem.id) {
+                return {...item, selected: !item.selected}
+            }
+            return item
+        })
+        setItems(newItems)
+    }
     return( 
-       <div className="container ">
-            {Item.map((elem) => {
+       <div className="container">
+            {items.map((elem) => {
                return (
-                    <div>
-                        <div key={elem.id} className={((elem.quantity) ? 'block' : "block disabled") + ((!elem.selected) ? '' : ' selected') }>
+                    <div key={elem.id} >
+                        <div 
+                        className={((elem.quantity) ? 'block' : "block disabled") + ((elem.selected) ? ' selected' : '')} 
+                        onClick={() =>select(elem)}
+                        >
                         <div className={(elem.quantity) ? '' : "overlay"}>
                             <div className='title__content'>
                                 <span className='title'>Cказочное заморское яство</span>
@@ -61,13 +77,14 @@ const Card: React.FC = () => {
                         </div>
                         <p className='footer'>
                             {(elem.selected) 
-                            ? <div>{elem.description}</div> 
-                            : (elem.quantity <= 0) ? <div style={{color:'#FFFF66'}}>
+                            ? <span>{elem.description}</span> 
+                            : (elem.quantity <= 0) ? <span style={{color:'#FFFF66'}}>
                                     Печалька, {elem.taste} закончился
-                                </div> 
-                            : <div>Чего сидишь? Порадуй котэ, 
-                                    <button className='sell'>купи</button>
-                                </div>  
+                                </span> 
+                            : <span>Чего сидишь? Порадуй котэ, 
+                                    <button className='sell'  onClick={() =>select(elem)}
+                                    >купи</button>
+                                </span>  
                             }
                         </p>
                     </div>
