@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/tanvasyl.github.io.%20/static/css/main.f3fa8391.css",
-    "main.js": "/tanvasyl.github.io.%20/static/js/main.b0e8283d.js",
-    "static/media/Photo2.svg": "/tanvasyl.github.io.%20/static/media/Photo2.be44cf1455f8784661de.svg",
-    "static/media/Pattern@2x.svg": "/tanvasyl.github.io.%20/static/media/Pattern@2x.81d60cbb6eeed54d694c.svg",
-    "static/media/exo-2-v20-latin_cyrillic-600.woff": "/tanvasyl.github.io.%20/static/media/exo-2-v20-latin_cyrillic-600.3ac68695c2d20217e189.woff",
-    "static/media/exo-2-v20-latin_cyrillic-800.woff": "/tanvasyl.github.io.%20/static/media/exo-2-v20-latin_cyrillic-800.dd5c78e6727ca50cb6d0.woff",
-    "static/media/exo-2-v20-latin_cyrillic-regular.woff": "/tanvasyl.github.io.%20/static/media/exo-2-v20-latin_cyrillic-regular.1a543eb542547e1ac575.woff",
-    "static/media/exo-2-v20-latin_cyrillic-800.woff2": "/tanvasyl.github.io.%20/static/media/exo-2-v20-latin_cyrillic-800.7e70f9017916ba6135d9.woff2",
-    "static/media/exo-2-v20-latin_cyrillic-600.woff2": "/tanvasyl.github.io.%20/static/media/exo-2-v20-latin_cyrillic-600.cde8bd655ed6a59842dc.woff2",
-    "static/media/exo-2-v20-latin_cyrillic-regular.woff2": "/tanvasyl.github.io.%20/static/media/exo-2-v20-latin_cyrillic-regular.37fd3a50ea9cfa896623.woff2",
-    "index.html": "/tanvasyl.github.io.%20/index.html",
-    "main.f3fa8391.css.map": "/tanvasyl.github.io.%20/static/css/main.f3fa8391.css.map",
-    "main.b0e8283d.js.map": "/tanvasyl.github.io.%20/static/js/main.b0e8283d.js.map"
+    "main.css": "/Test_task/static/css/main.acdf0244.css",
+    "main.js": "/Test_task/static/js/main.b0e8283d.js",
+    "static/media/Photo2.svg": "/Test_task/static/media/Photo2.be44cf1455f8784661de.svg",
+    "static/media/Pattern@2x.svg": "/Test_task/static/media/Pattern@2x.81d60cbb6eeed54d694c.svg",
+    "static/media/exo-2-v20-latin_cyrillic-600.woff": "/Test_task/static/media/exo-2-v20-latin_cyrillic-600.3ac68695c2d20217e189.woff",
+    "static/media/exo-2-v20-latin_cyrillic-800.woff": "/Test_task/static/media/exo-2-v20-latin_cyrillic-800.dd5c78e6727ca50cb6d0.woff",
+    "static/media/exo-2-v20-latin_cyrillic-regular.woff": "/Test_task/static/media/exo-2-v20-latin_cyrillic-regular.1a543eb542547e1ac575.woff",
+    "static/media/exo-2-v20-latin_cyrillic-800.woff2": "/Test_task/static/media/exo-2-v20-latin_cyrillic-800.7e70f9017916ba6135d9.woff2",
+    "static/media/exo-2-v20-latin_cyrillic-600.woff2": "/Test_task/static/media/exo-2-v20-latin_cyrillic-600.cde8bd655ed6a59842dc.woff2",
+    "static/media/exo-2-v20-latin_cyrillic-regular.woff2": "/Test_task/static/media/exo-2-v20-latin_cyrillic-regular.37fd3a50ea9cfa896623.woff2",
+    "index.html": "/Test_task/index.html",
+    "main.acdf0244.css.map": "/Test_task/static/css/main.acdf0244.css.map",
+    "main.b0e8283d.js.map": "/Test_task/static/js/main.b0e8283d.js.map"
   },
   "entrypoints": [
-    "static/css/main.f3fa8391.css",
+    "static/css/main.acdf0244.css",
     "static/js/main.b0e8283d.js"
   ]
 }
