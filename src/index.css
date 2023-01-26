@@ -1,9 +1,3 @@
-body {
-  position: absolute;
-  width: 1280px;
-  height: 680px;
-  left: 0px;
-  top: 0px;
-
-}
-
+@import '/src/fonts/fonts.css';
+@import './app.css';
+@import './Components/card.css';
