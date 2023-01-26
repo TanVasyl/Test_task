@@ -1,6 +1,16 @@
 import React from 'react'
 
-const initialState= [
+type State = {
+    id: number;
+    taste: string;
+    valume: string;
+    quantity: number;
+    gift: string;
+    selected: boolean;
+    description: string;
+}
+
+const initialState:State[]= [
     {
         id: 0,
         taste: 'с фуа-гра',
@@ -30,11 +40,12 @@ const initialState= [
         description: "Филе из цыплят с трюфелями в бульоне."
     }
 ]
-
 const Card: React.FC = () => {
     const [items, setItems] = React.useState(initialState)
+    const [leaveElem, setLeaveElem] = React.useState(false)
+    console.log('render');
     
-    const select = (elem:any) => {
+    const select = (elem:State) => {
         const newItems = items.map((item) => {
             if(item.id === elem.id) {
                 return {...item, selected: !item.selected}
@@ -43,18 +54,53 @@ const Card: React.FC = () => {
         })
         setItems(newItems)
     }
+    const handlerMouseLeave = React.useCallback((event:React.MouseEvent<Element, MouseEvent>) => {
+        if(event.type === 'mouseleave') {
+            setLeaveElem(true)
+        }        
+    },[])
+    const handlerMouseEnter = React.useCallback((event:React.MouseEvent<Element, MouseEvent>) => {
+        if(event.type === 'mouseenter') {
+            setLeaveElem(false)
+        }
+    },[])
+    const hover = () =>{
+        if(leaveElem) {
+            return '__hover'
+        } else {
+            return ''
+        }
+    }
+    const cls = (elem:State) => {
+        if(elem.quantity) {
+            if(elem.selected) {
+                return ` selected${hover()}`
+            }
+            return ` block${hover()}`
+        } else {
+            return ` disabled`
+        } 
+    }
     return( 
        <div className="container">
             {items.map((elem) => {
                return (
                     <div key={elem.id} >
                         <div 
-                        className={((elem.quantity) ? 'block' : "block disabled") + ((elem.selected) ? ' selected' : '')} 
+                        className={'block' + cls(elem)} 
+                        onMouseLeave={handlerMouseLeave}
+                        onMouseEnter={handlerMouseEnter}
                         onClick={() =>select(elem)}
                         >
                         <div className={(elem.quantity) ? '' : "overlay"}>
                             <div className='title__content'>
+                                {
+                                (('block' + cls(elem)) !== 'block selected__hover') 
+                                ?
                                 <span className='title'>Cказочное заморское яство</span>
+                                :
+                                <span className='title__selected'>Котэ неодобряет?</span>
+                                }
                                 <div className='name__brand'>
                                     <span>Нямушка</span>
                                     <span className='taste'>{elem.taste}</span>
@@ -70,7 +116,7 @@ const Card: React.FC = () => {
                                 </p>
                             </div>
                             <div className={(elem.quantity) ? 'valume' : " valume inactive "}>
-                                <span className='weight'>{elem.valume}</span>
+                                <span className='weight'>{elem.valume.replace('.' , ",")}</span>
                                 <span>кг</span>
                             </div>
                         </div>
@@ -81,14 +127,13 @@ const Card: React.FC = () => {
                             : (elem.quantity <= 0) ? <span style={{color:'#FFFF66'}}>
                                     Печалька, {elem.taste} закончился
                                 </span> 
-                            : <span>Чего сидишь? Порадуй котэ, 
-                                    <button className='sell'  onClick={() =>select(elem)}
-                                    >купи</button>
+                            : <span>Чего сидишь? Порадуй котэ,  
+                                    <button className='btn__sell'  onClick={() =>select(elem)}
+                                    > купи</button>
                                 </span>  
                             }
                         </p>
                     </div>
-                   
                )
             })}
         </div>
